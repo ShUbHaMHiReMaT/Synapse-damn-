@@ -1,16 +1,36 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Assessment Report — {{ assessment[5] }}</h1>
-  <p><strong>Sector:</strong> {{ assessment[6] }} | <strong>Dates:</strong> {{ assessment[2] }} → {{ assessment[3] }}</p>
-  <hr>
-  <h2>Findings</h2>
-  {% for f in findings %}
-    <article class="card">
-      <h3>{{ f[1] }} <small>({{ f[3] }})</small></h3>
-      <p><strong>CVSS:</strong> {{ f[4] }} | <strong>OWASP:</strong> {{ f[5] }}</p>
-      <p>{{ f[6] }}</p>
-      <p><strong>Impact:</strong> {{ f[7] }}</p>
-      <p><strong>Recommendation:</strong> {{ f[8] }}</p>
-    </article>
-  {% endfor %}
+
+<div class="report-container">
+
+    <h1 class="title">Assessment Report — {{ assessment[5] }}</h1>
+
+    <p class="meta">
+        <b>Sector:</b> {{ assessment[6] }} |
+        <b>Dates:</b> {{ assessment[2] }} → {{ assessment[3] }}
+    </p>
+
+    <!-- 🔥 DOWNLOAD BUTTONS -->
+    <div class="download-buttons" style="margin: 20px 0;">
+        <a href="{{ url_for('export_csv', ass_id=assessment[0]) }}" class="download-btn">CSV</a>
+        <a href="{{ url_for('export_json', ass_id=assessment[0]) }}" class="download-btn">JSON</a>
+    </div>
+
+    <h2 class="section-title">Findings</h2>
+
+    {% for f in findings %}
+    <div class="finding-card">
+        <h3>{{ f[1] }} ({{ f[0] }})</h3>
+        <p><b>CVSS:</b> {{ f[4] }} |
+           <b>OWASP:</b> {{ f[5] }}</p>
+
+        <p>{{ f[6] }}</p>
+
+        <p><b>Impact:</b> {{ f[7] }}</p>
+        <p><b>Recommendation:</b> {{ f[8] }}</p>
+    </div>
+    {% endfor %}
+
+</div>
+
 {% endblock %}
