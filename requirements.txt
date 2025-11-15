@@ -1,0 +1,8 @@
+Flask
+pytesseract
+pdfplumber
+opencv-python
+pymupdf
+python-docx
+easyocr
+imutils
