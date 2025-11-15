@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Findings</h2>
+  <table>
+    <tr><th>ID</th><th>Title</th><th>Severity</th><th>CVSS</th><th>OWASP</th><th>Org/Assmt</th></tr>
+    {% for f in findings %}
+      <tr>
+        <td><a href="{{ url_for('finding_view', find_id=f[0]) }}">{{ f[0] }}</a></td>
+        <td>{{ f[1] }}</td>
+        <td>{{ f[2] }}</td>
+        <td>{{ f[3] }}</td>
+        <td>{{ f[4] }}</td>
+        <td>{{ f[5] }} / {{ f[6] }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

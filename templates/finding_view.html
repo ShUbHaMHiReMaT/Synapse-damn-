@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Finding #{{ finding[0] }} - {{ finding[1] }}</h2>
+  <p><strong>Severity:</strong> {{ finding[3] }} | <strong>CVSS:</strong> {{ finding[4] }} ({{ finding[5] }})</p>
+  <p><strong>Description:</strong> {{ finding[6] }}</p>
+  <p><strong>Sector impact:</strong> {{ finding[8] }}</p>
+  <p><strong>Recommendation:</strong> {{ finding[9] }}</p>
+
+  <h3>Evidence</h3>
+  {% if evidence %}
+    <ul>
+      {% for e in evidence %}
+        <li>
+          <a href="{{ e.preview_url }}">{{ e.file }}</a> ({{ e.mime }}, {{ e.size }} bytes)
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No evidence uploaded yet. <a href="{{ url_for('evidence_upload', find_id=finding[0]) }}">Upload</a></p>
+  {% endif %}
+{% endblock %}

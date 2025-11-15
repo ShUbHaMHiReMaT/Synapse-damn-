@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Assessment Report — {{ assessment[5] }}</h1>
+  <p><strong>Sector:</strong> {{ assessment[6] }} | <strong>Dates:</strong> {{ assessment[2] }} → {{ assessment[3] }}</p>
+  <hr>
+  <h2>Findings</h2>
+  {% for f in findings %}
+    <article class="card">
+      <h3>{{ f[1] }} <small>({{ f[3] }})</small></h3>
+      <p><strong>CVSS:</strong> {{ f[4] }} | <strong>OWASP:</strong> {{ f[5] }}</p>
+      <p>{{ f[6] }}</p>
+      <p><strong>Impact:</strong> {{ f[7] }}</p>
+      <p><strong>Recommendation:</strong> {{ f[8] }}</p>
+    </article>
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Add Finding (Assessment {{ ass_id }})</h2>
+  <form method="POST" class="card">
+    <input name="title" placeholder="Title" required>
+    <select name="severity" required>
+      <option>Low</option><option>Medium</option><option>High</option><option>Critical</option>
+    </select>
+    <textarea name="description" placeholder="Description"></textarea>
+
+    <h4>CVSS</h4>
+    <input name="cvss_vector" placeholder="CVSS Vector">
+    <input name="cvss_score" placeholder="CVSS score (e.g. 9.8)">
+
+    <h4>OWASP</h4>
+    <input name="owasp_category" placeholder="e.g. A1: Injection">
+
+    <button>Create</button>
+  </form>
+
+  {% if template %}
+    <section class="card">
+      <h4>Sector Template (preview)</h4>
+      <p><strong>Impact:</strong> {{ template[0] }}</p>
+      <p><strong>Recommendation:</strong> {{ template[1] }}</p>
+    </section>
+  {% endif %}
+{% endblock %}

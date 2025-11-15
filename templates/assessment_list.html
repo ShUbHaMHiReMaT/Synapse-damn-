@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Assessments</h2>
+  <table>
+    <tr><th>ID</th><th>Organization</th><th>Dates</th><th>Status</th><th>Actions</th></tr>
+    {% for a in assessments %}
+      <tr>
+        <td>{{ a[0] }}</td>
+        <td>{{ a[1] }}</td>
+        <td>{{ a[2] }} → {{ a[3] }}</td>
+        <td>{{ a[4] }}</td>
+        <td>
+          <a href="{{ url_for('assessment_view', ass_id=a[0]) }}">View</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

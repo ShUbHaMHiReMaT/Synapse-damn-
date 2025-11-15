@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Organizations</h2>
+  <a href="{{ url_for('org_create') }}" class="btn">+ Create Org</a>
+  <table>
+    <tr><th>ID</th><th>Name</th><th>Sector</th><th>Created</th></tr>
+    {% for o in orgs %}
+      <tr>
+        <td>{{ o[0] }}</td>
+        <td>{{ o[1] }}</td>
+        <td>{{ o[2] or '-' }}</td>
+        <td>{{ o[3] }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

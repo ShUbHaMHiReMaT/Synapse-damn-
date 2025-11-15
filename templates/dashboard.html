@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Dashboard</h2>
+  <div class="cards">
+    <div class="card">Organizations: <strong>{{ org_count }}</strong></div>
+    <div class="card">Assessments: <strong>{{ ass_count }}</strong></div>
+    <div class="card">Findings: <strong>{{ find_count }}</strong></div>
+  </div>
+
+  <div class="links">
+    <a href="{{ url_for('org_list') }}">View Organizations</a> |
+    <a href="{{ url_for('assessment_list') }}">View Assessments</a> |
+    <a href="{{ url_for('finding_list_all') }}">View Findings</a>
+  </div>
+{% endblock %}

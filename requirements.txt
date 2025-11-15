@@ -1,0 +1,4 @@
+ Flask==2.2.5
+flask-mysqldb==1.0.1
+pdfkit==1.0.0
+Werkzeug==2.2.3

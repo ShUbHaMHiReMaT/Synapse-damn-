@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Create Organization</h2>
+  <form method="POST" class="card">
+    <input name="name" placeholder="Organization Name" required>
+    <select name="sector" required>
+      <option value="">-- Select Sector --</option>
+      {% for s in sectors %}
+        <option value="{{ s[0] }}">{{ s[1] }}</option>
+      {% endfor %}
+    </select>
+    <button>Create</button>
+  </form>
+{% endblock %}
